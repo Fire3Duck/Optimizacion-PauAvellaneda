@@ -707,7 +707,7 @@ MonoBehaviour:
   _pools:
   - parentName: Balas
     prefab: {fileID: 6454786293061406870, guid: 3ae7102398beb934ab35d1491ae7def3, type: 3}
-    poolSize: 0
+    poolSize: 20
     pooledObjects: []
   - parentName: Granadas
     prefab: {fileID: 2625857687061181190, guid: bf24e261ec1b8cf4d80e45d386844183, type: 3}
