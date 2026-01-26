@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(_bulletPrefab, _BulletSpawn.position, _BulletSpawn.rotation);
+        //Instantiate(_bulletPrefab, _BulletSpawn.position, _BulletSpawn.rotation);
+
+        GameObject bullet = Pooling.Instance.GetPooledObject(_BulletSpawn.position, _BulletSpawn.rotation);
+        bullet.SetActive(true);
     }
 }
