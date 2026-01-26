@@ -15,7 +15,7 @@ public class PoolManager : MonoBehaviour
 
     [SerializeField] private List<Pool> _pools;
 
-    [SerializeField] private Dictionary<string, Pool> _poolsDictionary;
+    [SerializeField] private Dictionary<string, Pool> _poolsDictionary = new Dictionary<string, Pool>();
 
     void Awake() 
     {
