@@ -8,6 +8,7 @@ public class Pooling : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private int _poolSize;
     [SerializeField] private List<GameObject> _pooledObjects;
+    [SerializeField] private string _parentName;
 
     void Awake()
     {
@@ -25,10 +26,12 @@ public class Pooling : MonoBehaviour
     void Start()
     {
         GameObject obj;
+        GameObject parent = new GameObject(_parentName);
 
         for (int i = 0; i < _poolSize; i++)
         {
             obj = Instantiate(_prefab);
+            obj.transform.SetParent(parent.transform);
             obj.SetActive(false);
             _pooledObjects.Add(obj);
         }
