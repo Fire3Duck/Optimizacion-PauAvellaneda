@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         //Instantiate(_bulletPrefab, _BulletSpawn.position, _BulletSpawn.rotation);
 
-        GameObject bullet = Pooling.Instance.GetPooledObject(_BulletSpawn.position, _BulletSpawn.rotation);
+        GameObject bullet = PoolManager.Instance.GetPooledObject("Balas", _BulletSpawn.position, _BulletSpawn.rotation);
         bullet.SetActive(true);
     }
 }
