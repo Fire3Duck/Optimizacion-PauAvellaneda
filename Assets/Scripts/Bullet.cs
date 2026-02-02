@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
 
     private Rigidbody _rigidbody;
-    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private float _bulletSpeed = 60f;
 
     void Awake()
     {
