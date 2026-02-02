@@ -8,18 +8,21 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _BulletSpawn;
 
     InputAction _moveAction;
-    Vector2 _moveValue;
+    Vector2 _move;
 
     [SerializeField] float _movementSpeed = 5;
 
     [SerializeField] Transform _sensorPosition;
     [SerializeField] float _sensorRadius;
 
+    private Rigidbody _rigidbody;
+
 
     void Awake()
     {
 
         _moveAction = InputSystem.actions["Move"];
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +34,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _moveValue = _moveAction.ReadValue<Vector2>();
+        _move = _moveAction.ReadValue<Vector2>();
 
         Movement();
 
@@ -43,7 +46,8 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        Vector3 moveDirection = new Vector3(_moveValue.x, 0, _moveValue.y);
+        Vector3 moveDirection = new Vector3(_move.x, 0, _move.y);
+        _rigidbody.linearVelocity = _move * _movementSpeed;
 
     }
 
