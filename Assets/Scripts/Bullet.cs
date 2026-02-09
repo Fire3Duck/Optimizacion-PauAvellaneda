@@ -24,9 +24,9 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if(GetComponent<Collider>().gameObject.layer == 6)
+        if(other.gameObject.layer == 6)
         {
-            Enemy enemyScript = GetComponent<Collider>().gameObject.GetComponent<Enemy>();
+            Enemy enemyScript = other.gameObject.GetComponent<Enemy>();
             enemyScript.TakeDamage(bulletDamage);
         }
         gameObject.SetActive(false);
