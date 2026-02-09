@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody _rigidbody;
     [SerializeField] private float _bulletSpeed = 60f;
-
+    public float bulletDamage = 2;
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -24,6 +24,11 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
+        if(GetComponent<Collider>().gameObject.layer == 6)
+        {
+            Enemy enemyScript = GetComponent<Collider>().gameObject.GetComponent<Enemy>();
+            enemyScript.TakeDamage(bulletDamage);
+        }
         gameObject.SetActive(false);
     }
 }
