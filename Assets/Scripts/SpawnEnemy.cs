@@ -19,13 +19,15 @@ public class EnemySpawn : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider>();
     }
+
+    void Start()
+    {
+        StartCoroutine(SpawnEnemy());
+    }
     // Update is called once per frame
     void Update()
     {
-        /*if(_enemiesToSpawn <= 0)
-        {
-            CancelInvoke(); //Cancela todos los Invoke.
-        }*/
+
     }
 
     IEnumerator SpawnEnemy()
@@ -41,19 +43,6 @@ public class EnemySpawn : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1);
-        }
-
-        //Instantiate(_enemiesPrefab[_enemyIndex], _spawnPoint.position, _spawnPoint.rotation);
-        //_enemiesToSpawn--;
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.CompareTag("Player"))
-        {
-            _collider.enabled = false;
-            //InvokeRepeating("SpawnEnemy", 0, 2); 
-            StartCoroutine(SpawnEnemy());
         }
     }
 }
