@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-    IEnumerator SpawnEnemy()
+    /*IEnumerator SpawnEnemy()
     {
         for (int i = 0; i < _enemiesToSpawn; i++)
         {
@@ -43,6 +43,25 @@ public class EnemySpawn : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1);
+        }
+    }*/
+
+    IEnumerator SpawnEnemy()
+    {
+        for (int i = 0; i < _enemiesToSpawn; i++)
+        {
+            _enemyIndex = Random.Range(0, _enemiesPrefab.Length);
+
+            Bounds bounds = _collider.bounds;
+
+            float randomX = Random.Range(bounds.min.x, bounds.max.x);
+            float spawnY = bounds.max.y;
+
+            Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
+
+            Instantiate(_enemiesPrefab[_enemyIndex], spawnPosition, Quaternion.identity);
+
+            yield return new WaitForSeconds(4f);
         }
     }
 }
