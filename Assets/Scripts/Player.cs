@@ -17,10 +17,13 @@ public class Player : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
+    private AudioSource _audioSource;
+    public AudioClip _shootSFX;
+
 
     void Awake()
     {
-
+        _audioSource = GetComponent<AudioSource>();
         _moveAction = InputSystem.actions["Move"];
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -57,5 +60,6 @@ public class Player : MonoBehaviour
 
         GameObject bullet = PoolManager.Instance.GetPooledObject("Balas", _BulletSpawn.position, _BulletSpawn.rotation);
         bullet.SetActive(true);
+        _audioSource.PlayOneShot(_shootSFX);
     }
 }

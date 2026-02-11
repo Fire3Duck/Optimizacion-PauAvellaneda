@@ -59,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
 
-            Instantiate(_enemiesPrefab[_enemyIndex], spawnPosition, Quaternion.identity);
+            EnemyPool.Instance.SpawnEnemy(spawnPosition);
 
             yield return new WaitForSeconds(4f);
         }
